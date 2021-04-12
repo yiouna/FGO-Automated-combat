@@ -2,9 +2,9 @@ import os, random
 import numpy as nu
 import cv2 as cv
 
-img = cv.imread('../fgo-02.png')
-img_chongenng = cv.imread('../fgo-chongeng.jpg')
-img_gongji = cv.imread('../fgo-gongji.png')
+img = cv.imread('../images/.png')
+img_chongenng = cv.imread('../images/fgo-chongeng.jpg')
+img_gongji = cv.imread('../images/fgo-gongji.png')
 """===== 技能使用 ===== """
 """ 创建一个战斗技能识别坐标 """
 def skill(img_1, img_2):
