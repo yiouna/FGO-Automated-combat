@@ -22,7 +22,6 @@ def master_skill(img_1,fgo_master_skill):
         for i in zip(*loc[::-1]):
             return i
 
-
 def skill(img_1, img_2):
     res = cv.matchTemplate(img_1, img_2, cv.TM_CCOEFF_NORMED)
     skill_contrast = 0.859
@@ -37,7 +36,6 @@ def skill(img_1, img_2):
             pos.append(i)
     return pos
 
-
 def Skill_object(fgo_opt,opt_id):
     """ 对技能确认选择   fgo_opt"""
     os.system('adb shell screencap /sdcard/02.png')
@@ -48,13 +46,13 @@ def Skill_object(fgo_opt,opt_id):
         print('进入技能选择 英灵阶段')
         if opt_id == 'role_1':
             print('选择 英灵 1')
-            os.system(f'adb shell input tap {random.randint(600,730)} {random.randint(630,730)}')
+            os.system(f'adb shell input tap {random.randint(600, 730)} {random.randint(630, 730)}')
         elif opt_id =='role_2':
             print('选择 英灵 2')
-            os.system(f'adb shell input tap {random.randint(1050,1150)} {random.randint(630,730)}')
+            os.system(f'adb shell input tap {random.randint(1050, 1150)} {random.randint(630, 730)}')
         else:
             print('选择 英灵 3')
-            os.system(f'adb shell input tap {random.randint(1500, 1600)} {random.randint(630,730)}')
+            os.system(f'adb shell input tap {random.randint(1500, 1600)} {random.randint(630, 730)}')
     else:
         print('没有匹配到选择界面')
 # print(skill(img,img1))
