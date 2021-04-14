@@ -21,6 +21,9 @@ def master_skill(img_1,fgo_master_skill):
         loc = nu.where(res >= 0.9)
         for i in zip(*loc[::-1]):
             return i
+    else:
+        i = (1,)
+        return i
 
 def skill(img_1, img_2):
     res = cv.matchTemplate(img_1, img_2, cv.TM_CCOEFF_NORMED)
@@ -59,13 +62,14 @@ def Skill_object(fgo_opt,opt_id):
 def role(pos, role_id,opt_id):
     """ 角色 1 2 3 进项筛选返回坐标 """
     if role_id == 'role_1':
-        loc = pre(700, 300, 930, 800, pos, opt_id)
+        print(pos)
+        loc = pre(700, 250, 930, 800, pos, opt_id)
         return loc
     elif role_id == 'role_2':
         loc = pre(1160, 770, 930, 800, pos, opt_id)
         return loc
     elif role_id == 'role_3':
-        loc = pre(1640, 1250, 930, 800, pos, opt_id)
+        loc = pre(1640, 1200, 930, 800, pos, opt_id)
         return loc
     elif role_id == 'master':
         loc = pre(1940, 1550, 630, 400, pos, opt_id)
