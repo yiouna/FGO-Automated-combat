@@ -39,7 +39,8 @@ def zhuzhan_xuanzhe_jiaose(img_role):
         if (res >= 0.9).any():
             loc = nu.where(res >= 0.9)
             for i in zip(*loc[::-1]):
-                subprocess.run(f'adb shell input tap {random.randint(i[0], i[0] + 500)} {random.randint(i[1], i[1] + 120)}')
+                subprocess.run(f'adb shell input tap {random.randint(i[0], i[0] + 300)} {random.randint(i[1], i[1] + 120)}')
+                print('选择完毕')
                 return
         else:
             print('没有检测到选择助战')
@@ -74,7 +75,7 @@ def start(fgo_startTask):
                 print('没有点击成功')
                 continue
             else:
-                print('助战选择完毕')
+                print('开始战斗')
                 return
         else:
             print('未抓取到 开始任务，')

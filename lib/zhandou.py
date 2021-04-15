@@ -9,6 +9,10 @@ import zhilin
 
 
 def master_skill(img_1, fgo_master_skill, num=0.9):
+    """
+     镶嵌于 end 函数 内部
+     镶嵌于 loop 函数内部
+      """
     res = cv.matchTemplate(img_1, fgo_master_skill, cv.TM_CCOEFF_NORMED)
     if (res >= num).any():
         loc = nu.where(res >= num)
@@ -165,33 +169,53 @@ def attact_color(red, green, blue, role_id):
             return card
 
 
-def end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_1):
+def end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_01, fgo_end_04, fgo_end_04_01, fgo_end_04_02,num_fix,fgo_zhuzhan):
     while True:
         zhilin.png()
         fgo_zhandou = cv.imread('images/zhandou.png')
 
         a = master_skill(fgo_zhandou, fgo_end_01, 0.8)
-        print(len(a))
         b = master_skill(fgo_zhandou, fgo_end_02, 0.8)
-        print(len(b))
         c = master_skill(fgo_zhandou, fgo_end_03, 0.8)
-        print(len(c))
+        d = master_skill(fgo_zhandou,fgo_end_04, 0.8)
+        e = master_skill(fgo_zhandou,fgo_zhuzhan, 0.8)
         if len(a) == 2 or len(b) == 2:
-            print(len(a),len(b))
-            print('从者羁绊/获得经验值')
             if len(a) == 2:
+                print('从者羁绊')
                 subprocess.run(
                     f'adb shell input tap {random.randint(a[0], a[0] + 250)} {random.randint(a[1], a[1] + 40)}')
+                time.sleep(1)
             elif len(b) == 2:
+                print('获得经验值')
                 subprocess.run(
                     f'adb shell input tap {random.randint(b[0], b[0] + 250)} {random.randint(b[1], b[1] + 40)}')
-        elif len(c) == 2:
-            print('获得战利品')
-            loc = master_skill(fgo_zhandou, fgo_end_03_1, 0.8)
-            print('下一步')
-            subprocess.run(
-                f'adb shell input tap {random.randint(loc[0], loc[0] + 160)} {random.randint(loc[1], loc[1] + 50)}')
+                time.sleep(1)
+        elif len(c) == 2 or len(d) == 2:
+            if len(c) == 2:
+                print('获得战利品')
+                loc = master_skill(fgo_zhandou, fgo_end_03_01, 0.8)
+                print('下一步')
+                subprocess.run(
+                    f'adb shell input tap {random.randint(loc[0], loc[0] + 160)} {random.randint(loc[1], loc[1] + 50)}')
+                time.sleep(1)
+            elif len(d) == 2:
+                print('继续关卡')
+                if num_fix:
+                    loc = master_skill(fgo_zhandou,fgo_end_04_01,0.8) #不继续
+                    subprocess.run(
+                        f'adb shell input tap {random.randint(loc[0], loc[0] + 160)} {random.randint(loc[1], loc[1] + 50)}')
+                    print('结束脚本')
+                    break
+                else:
+                    loc = master_skill(fgo_zhandou, fgo_end_04_02, 0.8) #继续
+                    print('继续循环')
+                    subprocess.run(
+                        f'adb shell input tap {random.randint(loc[0], loc[0] + 160)} {random.randint(loc[1], loc[1] + 50)}')
+                # 为了防止 截图间隔时间太短导致 连续点击 这边停顿一秒 再截图
+                time.sleep(1)
+        elif len(e) == 2:
+            print('进入助战界面')
             break
         else:
-            time.sleep(random.uniform(0.3, 0.5))
+            time.sleep(random.uniform(0.5, 0.8))
             continue
