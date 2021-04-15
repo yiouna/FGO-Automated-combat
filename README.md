@@ -1,7 +1,7 @@
 # Automated combat
 一个  python 刷狗粮脚本。 使用opencv库
 
- ====功能======
+ ##====功能======
  
 自动助战     √
 
