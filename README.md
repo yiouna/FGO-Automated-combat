@@ -16,4 +16,12 @@
 
 > 本脚为自用，如果发生任何事情 ，作者不承担任何责任
 
-### 项目使用说明
+### 项目部署
+ 1.安装python
+ 2.安装 python opencv库
+ > 打开cmd 输入：
+ > pip install -i https://pypi.tuna.tsinghua.edu.cn/simple opencv-contrib-python
+ > 进行安装
+
+ 3. 首先克隆项目
+ > 通过项目主页 Code 》 Download ZIP 来下载本项目 解压文件
