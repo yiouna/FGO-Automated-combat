@@ -8,15 +8,15 @@ import numpy as nu
 import zhilin
 
 
-def zhuzhan(img_2,img_role):
-    """ img_1 传入的事实截图  img_2传入的需要对比的 ‘助战选择’ """
+def zhuzhan(img_2, servant, rank):
+    """ servant传入的需要对比的 ‘助战选择’ rank 则是职介 """
     zhilin.png()
     fgo_zhandou = cv.imread('images/zhandou.png')
     while True:
         res = cv.matchTemplate(fgo_zhandou, img_2, cv.TM_CCOEFF_NORMED)
         if (res >= 0.8).any():
             print('进入选择人物界面')
-            zhuzhan_xuanzhe_jiaose(img_role)
+            zhuzhan_xuanzhe_jiaose(servant,rank)
             break
         else:
             zhilin.png()
@@ -24,18 +24,18 @@ def zhuzhan(img_2,img_role):
             continue
 
 
-def zhuzhan_xuanzhe_jiaose(img_role):
-    """ img_rlle 传入的需要对比的细节图片 ‘校色名称’ """
+def zhuzhan_xuanzhe_jiaose(servant,rank):
+    """ servant 传入的需要对比的细节图片 ‘校色名称’ """
     """ 职介坐标 """
-    catser = [(838, 172), (869, 205)]  # 术士
+    Catser = [(838, 172), (869, 205)]  # 术士
     """ 选择坐标 """
-    print('选择 catser')
-    subprocess.run(f'adb shell input tap {random.randint(catser[0][0],catser[1][0])} {random.randint(catser[0][1],catser[1][1])}')
-    time.sleep(random.uniform(0.5,1))
+    if rank == 'Catser':
+        subprocess.run(f'adb shell input tap {random.randint(Catser[0][0],Catser[1][0])} {random.randint(Catser[0][1],Catser[1][1])}')
+        time.sleep(random.uniform(0.5,1))
     zhilin.png()
     fgo_zhandou = cv.imread('images/zhandou.png')
     while True:
-        res = cv.matchTemplate(fgo_zhandou, img_role, cv.TM_CCOEFF_NORMED)
+        res = cv.matchTemplate(fgo_zhandou, servant, cv.TM_CCOEFF_NORMED)
         if (res >= 0.9).any():
             loc = nu.where(res >= 0.9)
             for i in zip(*loc[::-1]):
