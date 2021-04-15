@@ -28,5 +28,9 @@
  1-2.查询opencv是否安装完成
  >输入 pip list 来查询是否安装成功
 
-2.安装 adb
+## 2.安装 adb
+
+
+>adb devices 
+查询连接设备
  
