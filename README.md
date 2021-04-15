@@ -31,6 +31,5 @@
 ## 2.安装 adb
 
 
->adb devices 
-查询连接设备
+>adb devices   查询连接设备
  
