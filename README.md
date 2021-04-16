@@ -24,7 +24,7 @@
  1-1.安装 python opencv库
 
   > 打开cmd 输入：
-  > pip install -i https://pypi.tuna.tsinghua.edu.cn/simple opencv-contrib-python
+  > pip install -i https://pypi.tuna.tsinghua.edu.cn/simple opencv-python
   > 进行安装
 
  1-2.查询opencv是否安装完成
