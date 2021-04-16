@@ -1,5 +1,6 @@
 # Automated combat
 一个  python 刷狗粮脚本。 使用opencv库
+bilibili 视频 [点击]（https://www.bilibili.com/video/av887505662）
 ## 缺点声明
  战斗有点慢，可能需要三分半一把。具体还是要看自己设置
 目前只支持 助战：C阶
