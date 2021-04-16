@@ -64,7 +64,7 @@
  打开夜神模拟器。把分辨率调整为 2340x1080<br>
  在夜神模拟器中 打开usb调试<br>
 >打开cmd（命令提示符）输入<br>
-     >adb device<br>
+     >adb devices<br>
      >List of devices attached<br>
      >127.0.0.1:62001 device<br>
 >就连接成功了<br>
