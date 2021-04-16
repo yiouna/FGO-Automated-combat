@@ -19,12 +19,13 @@
 ### 项目部署
 ## 1.安装python 以及其需要库
 
-  >python 自信百度安装 老简单了
+  >python 自行百度安装 老简单了
  
  1-1.安装 python opencv库
 
   > 打开cmd 输入：
-  > pip install -i https://pypi.tuna.tsinghua.edu.cn/simple opencv-contrib-python
+  > pip install -i https://pypi.tuna.tsinghua.edu.cn/simple opencv-python
+  >
   > 进行安装
 
  1-2.查询opencv是否安装完成
@@ -56,17 +57,17 @@
  ### 1.首先 先把上面的adb 步骤走完。
  ### 2.下载夜神模拟器。这个就不需要我教了
  ### 3.进入夜神根目录，看你安装在哪
->还记得之前下载的 adb 吗 复制一份 adb.exe 更名为 nox_adb.exe
->Nox/bin 
- 找到文件 nox_adb.exe 进行替换 同时把 Nox/bin 文件中自带的adb.exe 删除
- 然后重复环境变量操作 将nox_abd.exe 加入环境变量中
- 打开夜神模拟器。把分辨率调整为 2340x1080
- 在夜神模拟器中 打开usb调试
->打开cmd（命令提示符）输入
-     >adb device
-     >List of devices attached
-     >127.0.0.1:62001 device
->就连接成功了
+>还记得之前下载的 adb 吗 复制一份 adb.exe 更名为 nox_adb.exe<br>
+>Nox/bin <br>
+ 找到文件 nox_adb.exe 进行替换 同时把 Nox/bin 文件中自带的adb.exe 删除<br>
+ 然后重复环境变量操作 将nox_abd.exe 加入环境变量中<br>
+ 打开夜神模拟器。把分辨率调整为 2340x1080<br>
+ 在夜神模拟器中 打开usb调试<br>
+>打开cmd（命令提示符）输入<br>
+     >adb devices<br>
+     >List of devices attached<br>
+     >127.0.0.1:62001 device<br>
+>就连接成功了<br>
  
  ## 下载本项目
  [fgo-Automated-combat](https://github.com/yiouna/fgo-Automated-combat)
@@ -87,9 +88,53 @@
       >zhilin.py
  我们进入文件 fgo-Automated-combat-main
  
- > 手机或模拟器 停留在fgo 队伍确认界面
- >打开 windows PowerShell
- >python main.py
+ >手机或模拟器 停留在fgo 队伍确认界面<br>
+ >打开 windows PowerShell<br>
+ >python main.py<br>
  > 手动点击下 开始战斗，就开始战斗，自动过结算，自动继续循环关卡，自动选择助战。
  
  
+ 
+# config.py 配置文件解释
+  建议使用 Notepad 打开文件
+  
+  ## 战斗回合技能设置
+  
+  本脚本是自定义技能使用的 既多少回合结束战斗，每回合使用战斗技能，是否使用宝具，都需要自己进行填写，助战也是
+  
+     [{'role_1': [['a','b'], c, ‘d’],
+      'role_2': [['a','b'], c, ‘d’]，
+      'role_3': [['a','b'], c, ‘d’]，
+      'master': [['a','b'], c, ‘d’]，}]
+      
+      如此便代表一回合
+     
+     [{'role_1': [['a','b'], c, ‘d’],
+      'role_2': [['a','b'], c, ‘d’]，
+      'role_3': [['a','b'], c, ‘d’]，
+      'master': [['a','b'], c, ‘d’]，},
+      {'role_1': [['a','b'], c, ‘d’],
+      'role_2': [['a','b'], c, ‘d’]，
+      'role_3': [['a','b'], c, ‘d’]，
+      'master': [['a','b'], c, ‘d’]，}]
+      
+      如此便代表两回合
+      
+      a b 代表的是技能 只需要参照技能图标进行填写即可 如果不使用技能留空则好
+      
+      c 则是是否使用宝具。 False 不使用 True 使用
+      d 则是 技能使用 如果需要对角色进行选择 则填写 role_1 role_2 role_3 
+        如果不需要 则填写 None （目前只支持一个角色的技能针对 一个角色
+        
+       'role_1': [['fgo_baojuchongneng'], False, 'role_2']
+       
+       翻译 角色1 使用宝具充能技能，  不使用宝具 技能对角色2 使用
+       
+       'role_2': [[], False, None],
+        
+       翻译 角色2 不适用技能 不使用宝具 技能不会任何人使用
+       
+# 声明
+
+  任何因为本项目 而导致的账号损失，作者不负任何责任
+     
