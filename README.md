@@ -42,14 +42,20 @@
 
 ### 添加环境变量
 
-此电脑 -> 右键 属性 -> 高级系统设置 -> 高级 -> 环境变量 -> 选择 Path -> 编辑 -> 新建 -> 输入解压根目录  这边我是放在了D:\dw\ADB 所以路径填写为 D:\dw\ADB 
+此电脑 -> 右键 属性 -> 高级系统设置 -> 高级 -> 环境变量 -> 选择 Path -> 编辑 -> 新建 -> 输入解压根目录  
 
+>这边我是放在了D:\dw\ADB 所以路径填写为 D:\dw\ADB
+>
 ![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/2.jpg)
 ![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/3.jpg)
 ![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/4.jpg)
 ![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/5.jpg)
 ![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/6.jpg)
 
-## 须知指令
+> 这个时候 打开你的手机 使用数据线连接电脑 adb devices 查询是否连接上
 >adb devices   查询 安卓连接设备 连接设备
+>![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/7-1.jpg)
+>代表连接成功
+
+## ！使用模拟器方法连接 这里使用夜神模拟器 为例子
  
