@@ -18,6 +18,8 @@
 
 ### 项目部署
 ## 1.安装python 以及其需要库
+
+  >python 自信百度安装 老简单了
  
  1-1.安装 python opencv库
 
@@ -28,9 +30,26 @@
  1-2.查询opencv是否安装完成
  >输入 pip list 来查询是否安装成功
 
-## 2.安装 adb
+## 2.下载 并且解压 adb
 
-[下载链接](https://pan.baidu.com/s/1nwqJXE5RKwXqRiFyxZ9OXQ)
+你可以去自信下载 也可以直接使用下方链接进行我打包使用的adb
 
->adb devices   查询连接设备
+>[下载链接](https://pan.baidu.com/s/1nwqJXE5RKwXqRiFyxZ9OXQ)  提取码：gdqn
+
+### 解压文件
+
+![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/1.jpg)
+
+### 添加环境变量
+
+此电脑 -> 右键 属性 -> 高级系统设置 -> 高级 -> 环境变量 -> 选择 Path -> 编辑 -> 新建 -> 输入解压根目录  这边我是放在了D:\dw\ADB 所以路径填写为 D:\dw\ADB 
+
+![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/2.jpg)
+![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/3.jpg)
+![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/4.jpg)
+![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/5.jpg)
+![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/6.jpg)
+
+## 须知指令
+>adb devices   查询 安卓连接设备 连接设备
  
