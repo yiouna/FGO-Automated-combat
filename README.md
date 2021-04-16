@@ -56,17 +56,17 @@
  ### 1.首先 先把上面的adb 步骤走完。
  ### 2.下载夜神模拟器。这个就不需要我教了
  ### 3.进入夜神根目录，看你安装在哪
->还记得之前下载的 adb 吗 复制一份 adb.exe 更名为 nox_adb.exe
->Nox/bin 
+>还记得之前下载的 adb 吗 复制一份 adb.exe 更名为 nox_adb.exe<br>
+>Nox/bin <br>
  找到文件 nox_adb.exe 进行替换 同时把 Nox/bin 文件中自带的adb.exe 删除<br>
- 然后重复环境变量操作 将nox_abd.exe 加入环境变量中
- 打开夜神模拟器。把分辨率调整为 2340x1080
- 在夜神模拟器中 打开usb调试
->打开cmd（命令提示符）输入
-     >adb device
-     >List of devices attached
-     >127.0.0.1:62001 device
->就连接成功了
+ 然后重复环境变量操作 将nox_abd.exe 加入环境变量中<br>
+ 打开夜神模拟器。把分辨率调整为 2340x1080<br>
+ 在夜神模拟器中 打开usb调试<br>
+>打开cmd（命令提示符）输入<br>
+     >adb device<br>
+     >List of devices attached<br>
+     >127.0.0.1:62001 device<br>
+>就连接成功了<br>
  
  ## 下载本项目
  [fgo-Automated-combat](https://github.com/yiouna/fgo-Automated-combat)
