@@ -58,7 +58,7 @@
  ### 3.进入夜神根目录，看你安装在哪
 >还记得之前下载的 adb 吗 复制一份 adb.exe 更名为 nox_adb.exe
 >Nox/bin 
- 找到文件 nox_adb.exe 进行替换 同时把 Nox/bin 文件中自带的adb.exe 删除
+ 找到文件 nox_adb.exe 进行替换 同时把 Nox/bin 文件中自带的adb.exe 删除<br>
  然后重复环境变量操作 将nox_abd.exe 加入环境变量中
  打开夜神模拟器。把分辨率调整为 2340x1080
  在夜神模拟器中 打开usb调试
@@ -87,9 +87,9 @@
       >zhilin.py
  我们进入文件 fgo-Automated-combat-main
  
- > 手机或模拟器 停留在fgo 队伍确认界面
- >打开 windows PowerShell
- >python main.py
+ >手机或模拟器 停留在fgo 队伍确认界面<br>
+ >打开 windows PowerShell<br>
+ >python main.py<br>
  > 手动点击下 开始战斗，就开始战斗，自动过结算，自动继续循环关卡，自动选择助战。
  
  
