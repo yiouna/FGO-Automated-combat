@@ -46,11 +46,6 @@
 
 >这边我是放在了D:\dw\ADB 所以路径填写为 D:\dw\ADB
 >
-![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/2.jpg)
-![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/3.jpg)
-![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/4.jpg)
-![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/5.jpg)
-![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/6.jpg)
 
 > 这个时候 打开你的手机 使用数据线连接电脑 adb devices 查询是否连接上
 >adb devices   查询 安卓连接设备 连接设备
@@ -58,4 +53,17 @@
 >代表连接成功
 
 ## ！使用模拟器方法连接 这里使用夜神模拟器 为例子
+ ### 1.首先 先把上面的adb 步骤走完。
+ ### 2.下载夜神模拟器。这个就不需要我教了
+ ### 3.进入夜神根目录，看你安装在哪
+     >还记得之前下载的 adb 吗 复制一份 adb.exe 更名为 nox_adb.exe
+     >Nox/bin 
+     >找到文件 nox_adb.exe 进行替换
+     >然后重复环境变量操作 将nox_abd.exe 加入环境变量中
+     >打开夜神模拟器。把分辨率调整为 2340x1080
+     >在夜神模拟器中 打开usb调试
+     >打开cmd（命令提示符）输入
+     >adb device
+     >
+ 
  
