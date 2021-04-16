@@ -19,7 +19,7 @@
 ### 项目部署
 ## 1.安装python 以及其需要库
 
-  >python 自信百度安装 老简单了
+  >python 自行百度安装 老简单了
  
  1-1.安装 python opencv库
 
@@ -93,3 +93,17 @@
  > 手动点击下 开始战斗，就开始战斗，自动过结算，自动继续循环关卡，自动选择助战。
  
  
+ 
+# config.py 配置文件解释
+  建议使用 Notepad 打开文件
+  
+  ## 战斗回合技能设置
+  
+  本脚本是自定义技能使用的 既多少回合结束战斗，每回合使用战斗技能，是否使用宝具，都需要自己进行填写，助战也是
+  
+     {'role_1': [['fgo_baojuchongneng'], True, None],
+     'role_2': [[], False, None],
+     'role_3': [[], False, None],
+     'master': [[], False, None], }
+     
+     
