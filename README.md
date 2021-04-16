@@ -30,6 +30,7 @@
 
 ## 2.安装 adb
 
+[下载链接](https://pan.baidu.com/s/1nwqJXE5RKwXqRiFyxZ9OXQ)
 
 >adb devices   查询连接设备
  
