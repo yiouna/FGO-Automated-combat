@@ -134,6 +134,8 @@
         
        翻译 角色2 不适用技能 不使用宝具 技能不会任何人使用
        
+       
+       ![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/%E6%8A%80%E8%83%BD.png)
 # 声明
 
   任何因为本项目 而导致的账号损失，作者不负任何责任
