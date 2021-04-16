@@ -5,14 +5,14 @@ import zhilin
 
 import cv2 as cv
 
-from config import rounds, nums, servant, rank
+from config import rounds, nums, servant, rank, Apple
 from lib import zhuzhan, zhandou
 
 
 # adb devices 查看设备
 
 
-def main(rounds, nums, servant, rank):
+def main(rounds, nums, servant, rank , Apple):
     """ 技能图标 """
     # 宝具
     fgo_baojuchongneng = cv.imread('images/skill/fgo-baojuchongneng.png')
@@ -47,9 +47,19 @@ def main(rounds, nums, servant, rank):
     fgo_end_04 = cv.imread('images/system/fgo_end_04.png')
     fgo_end_04_01 = cv.imread('images/system/fgo_end_04_01.png')
     fgo_end_04_02 = cv.imread('images/system/fgo_end_04_02.png')
+
+    # 补充体力
+    fgo_end_05 = cv.imread('images/system/fgo_end_05.png')
+    fgo_end_05_shenjinshi = cv.imread('images/system/fgo_end_05_shenjinshi.png')
+    fgo_end_05_jin_Apple = cv.imread('images/system/fgo_end_05_jin_Apple.png')
+    fgo_end_05_yin_Apple =  cv.imread('images/system/fgo_end_05_yin_Apple.png')
+    #fgo_end_05_tong_Apple =  cv.imread('images/system/fgo_end_05_tong_Apple.png')
+    fgo_end_05_ok = cv.imread('images/system/fgo_end_05_ok.png')
+
     """ 助战角色 """
     fgo_servant_sikadi_sikaha = cv.imread('images/servant/fgo-servant-sikadi_sikaha.png')
     fgo_servant_zhugekongmin = cv.imread('images/servant/fgo-servant-zhugekongmin.png')
+    fgo_servant_meiling = cv.imread('images/servant/fgo-servant-meiling.png')
 
     """ 开始战斗 """
     # zhuzhan.start(fgo_startTask)
@@ -76,8 +86,7 @@ def main(rounds, nums, servant, rank):
                     break
             if round_i['master'][0]:
                 print('检测到本回合需要使用 master 技能')
-                subprocess.run(
-                    f'adb shell input tap {random.randint(loc_master[0], loc_master[0] + 50)} {random.randint(loc_master[1], loc_master[1] + 50)}')
+                subprocess.run(f'adb shell input tap {random.randint(loc_master[0], loc_master[0] + 50)} {random.randint(loc_master[1], loc_master[1] + 50)}')
                 time.sleep(0.5)
             zhilin.png()
             fgo_zhandou = cv.imread('images/zhandou.png')
@@ -101,8 +110,7 @@ def main(rounds, nums, servant, rank):
             for i in huihe_2:
                 if 1940 > i[0] > 1550 and 630 > i[1] > 400:
                     print('检测到技能为 matser 技能')
-                    subprocess.run(
-                        f'adb shell input tap {random.randint(loc_master[0], loc_master[0] + 50)} {random.randint(loc_master[1], loc_master[1] + 50)}')
+                    subprocess.run(f'adb shell input tap {random.randint(loc_master[0], loc_master[0] + 50)} {random.randint(loc_master[1], loc_master[1] + 50)}')
                     time.sleep(0.5)
                 subprocess.run(
                     f'adb shell input tap {random.randint(i[0], i[0] + 50)} {random.randint(i[1], i[1] + 50)}')
@@ -138,6 +146,7 @@ def main(rounds, nums, servant, rank):
         zhandou.end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_01, fgo_end_04, fgo_end_04_01, fgo_end_04_02,
                     num_fix, fgo_zhuzhan)
         if not num_fix:
+            zhandou.np(fgo_end_05, fgo_end_05_jin_Apple, fgo_end_05_yin_Apple, fgo_end_05_shenjinshi, fgo_end_05_ok, Apple)
             zhuzhan.zhuzhan(fgo_zhuzhan, locals()[servant], rank)
 
     end = time.time()
@@ -145,4 +154,4 @@ def main(rounds, nums, servant, rank):
 
 
 if __name__ == '__main__':
-    main(rounds, nums, servant, rank)
+    main(rounds, nums, servant, rank, Apple)
