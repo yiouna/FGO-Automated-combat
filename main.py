@@ -9,7 +9,7 @@ from config import rounds, nums, servant, rank
 from lib import zhuzhan, zhandou
 
 
-#adb devices 查看设备
+# adb devices 查看设备
 
 
 def main(rounds, nums, servant, rank):
@@ -43,7 +43,7 @@ def main(rounds, nums, servant, rank):
     fgo_end_02 = cv.imread('images/system/fgo_end_02.png')
     fgo_end_03 = cv.imread('images/system/fgo_end_03.png')
     fgo_end_03_01 = cv.imread('images/system/fgo_end_03_01.png')
-    #是否进行同一关卡
+    # 是否进行同一关卡
     fgo_end_04 = cv.imread('images/system/fgo_end_04.png')
     fgo_end_04_01 = cv.imread('images/system/fgo_end_04_01.png')
     fgo_end_04_02 = cv.imread('images/system/fgo_end_04_02.png')
@@ -52,11 +52,15 @@ def main(rounds, nums, servant, rank):
     fgo_servant_zhugekongmin = cv.imread('images/servant/fgo-servant-zhugekongmin.png')
 
     """ 开始战斗 """
-    #zhuzhan.start(fgo_startTask)
+    # zhuzhan.start(fgo_startTask)
     """ 进行战斗 """
     start = time.time()
+    if servant == 'fgo_servant_zhugekongmin':
+        print('本次战斗自动助战选择为诸葛孔明')
+    elif servant == 'fgo_servant_sikadi_sikaha':
+        print('本次战斗自动助战选择为斯卡哈·斯卡蒂')
     for num in range(nums):
-        print(f"开始进行第{num+1}次战斗")
+        print(f"开始进行第{num + 1}次战斗")
         for round_i in rounds:
             while True:
                 zhilin.png()
@@ -72,7 +76,8 @@ def main(rounds, nums, servant, rank):
                     break
             if round_i['master'][0]:
                 print('检测到本回合需要使用 master 技能')
-                subprocess.run(f'adb shell input tap {random.randint(loc_master[0], loc_master[0] + 50)} {random.randint(loc_master[1], loc_master[1] + 50)}')
+                subprocess.run(
+                    f'adb shell input tap {random.randint(loc_master[0], loc_master[0] + 50)} {random.randint(loc_master[1], loc_master[1] + 50)}')
                 time.sleep(0.5)
             zhilin.png()
             fgo_zhandou = cv.imread('images/zhandou.png')
@@ -99,7 +104,8 @@ def main(rounds, nums, servant, rank):
                     subprocess.run(
                         f'adb shell input tap {random.randint(loc_master[0], loc_master[0] + 50)} {random.randint(loc_master[1], loc_master[1] + 50)}')
                     time.sleep(0.5)
-                subprocess.run(f'adb shell input tap {random.randint(i[0], i[0] + 50)} {random.randint(i[1], i[1] + 50)}')
+                subprocess.run(
+                    f'adb shell input tap {random.randint(i[0], i[0] + 50)} {random.randint(i[1], i[1] + 50)}')
                 # 如果有需要技能的选择队友的
                 if i[2] != None:
                     time.sleep(1)
@@ -109,7 +115,8 @@ def main(rounds, nums, servant, rank):
             col = zhandou.attack(fgo_zhandou, fgo_gongji)
             print(col)
 
-            subprocess.run(f'adb shell input tap {random.randint(col[0], col[0] + 50)} {random.randint(col[1], col[1] + 50)}')
+            subprocess.run(
+                f'adb shell input tap {random.randint(col[0], col[0] + 50)} {random.randint(col[1], col[1] + 50)}')
             time.sleep(1)
             # 开始确定使用卡牌
             time.sleep(1)
@@ -119,20 +126,23 @@ def main(rounds, nums, servant, rank):
             red, green, blue = zhandou.attack_choose(fgo_zhandou, fgo_red, fgo_green, fgo_blue)
             card = zhandou.attact_color(red, green, blue, role_id)
             for i in card:
-                subprocess.run(f'adb shell input tap {random.randint(i[0], i[0] + 50)} {random.randint(i[1], i[1] + 50)}')
+                subprocess.run(
+                    f'adb shell input tap {random.randint(i[0], i[0] + 50)} {random.randint(i[1], i[1] + 50)}')
                 time.sleep(0.5)
             print('本回合结束')
         print('战斗结束，等待结算')
-        if num+1 == nums:
+        if num + 1 == nums:
             num_fix = True
         else:
             num_fix = False
-        zhandou.end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_01, fgo_end_04, fgo_end_04_01, fgo_end_04_02,num_fix,fgo_zhuzhan)
+        zhandou.end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_01, fgo_end_04, fgo_end_04_01, fgo_end_04_02,
+                    num_fix, fgo_zhuzhan)
         if not num_fix:
             zhuzhan.zhuzhan(fgo_zhuzhan, locals()[servant], rank)
 
     end = time.time()
-    print((end - start)/60, '一共用时50s')
+    print(f'一共用时{(end - start) / 60}分钟')
+
 
 if __name__ == '__main__':
     main(rounds, nums, servant, rank)
