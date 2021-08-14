@@ -126,8 +126,10 @@ C呆毛
         'master': [{'fgo_baojuchongneng': "role_1"}, 'false']
     },
     role_1 即为角色1
+   
     {'fgo_huifu': "", 'fgo_baojuweili_up': ""}, 'true'
     回复技能,无目标  宝具威力加强,无目标  'true' 表示这回合使用宝具
+    
     role_2 角色2 
     {'fgo_gongjili_up': "", 'fgo_baojuchongneng': "role_1", 'fgo_lanka_up': "role_1"}, 'false'
     攻击力加强 无目标 宝具充能 对象 一号角色 蓝卡加强 一号角色 不释放宝具
