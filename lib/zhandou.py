@@ -38,56 +38,57 @@ def skill(img_1, img_2):
     return pos
 
 
-def Skill_object(fgo_opt, opt_id):
+def Skill_object(opt_id):
     """ 对技能确认选择   fgo_opt"""
+    """
+    代码废弃
     os.system('adb shell screencap /sdcard/02.png')
     os.system('adb pull /sdcard/02.png images/zhandou.png')
     fgo_zhandou = cv.imread('images/zhandou.png')
     res = cv.matchTemplate(fgo_zhandou, fgo_opt, cv.TM_CCOEFF_NORMED)
-    if (res >= 0.8).any():
-        print('进入技能选择 英灵阶段')
-        if opt_id == 'role_1':
-            print('选择 英灵 1')
-            os.system(f'adb shell input tap {random.randint(600, 730)} {random.randint(630, 730)}')
-        elif opt_id == 'role_2':
-            print('选择 英灵 2')
-            os.system(f'adb shell input tap {random.randint(1050, 1150)} {random.randint(630, 730)}')
-        else:
-            print('选择 英灵 3')
-            os.system(f'adb shell input tap {random.randint(1500, 1600)} {random.randint(630, 730)}')
-    else:
-        print('没有匹配到选择界面')
+        if (res >= 0.8).any():
+    """
+    print('进入技能选择 英灵阶段')
+    if opt_id == 'role_1':
+        print('选择 英灵 1')
+        os.system(f'adb shell input tap {random.randint(600, 730)} {random.randint(630, 730)}')
+    elif opt_id == 'role_2':
+        print('选择 英灵 2')
+        os.system(f'adb shell input tap {random.randint(1050, 1150)} {random.randint(630, 730)}')
+    elif opt_id == 'role_3':
+        print('选择 英灵 3')
+        os.system(f'adb shell input tap {random.randint(1500, 1600)} {random.randint(630, 730)}')
+
 
 
 # print(skill(img,img1))
-def role(pos, role_id, opt_id):
+def role(pos, role_id,):
     """ 角色 1 2 3 进项筛选返回坐标 """
     if role_id == 'role_1':
-        print(pos)
-        loc = pre(700, 250, 930, 800, pos, opt_id)
+        loc = pre(700, 250, 930, 800, pos,)
         return loc
     elif role_id == 'role_2':
-        loc = pre(1160, 770, 930, 800, pos, opt_id)
+        loc = pre(1160, 770, 930, 800, pos,)
         return loc
     elif role_id == 'role_3':
-        loc = pre(1640, 1200, 930, 800, pos, opt_id)
+        loc = pre(1640, 1200, 930, 800, pos,)
         return loc
     elif role_id == 'master':
-        loc = pre(1940, 1550, 630, 400, pos, opt_id)
+        loc = pre(1940, 1550, 630, 400, pos,)
         return loc
 
 
 """ ==================== """
 
 
-def pre(x_1, x_2, y_1, y_2, pos, opi_id):
+def pre(x_1, x_2, y_1, y_2, pos):
     """ 属于 role 内置判断函数 用于筛选坐标 """
     for i in pos:
         x = i[0]
         y = i[1]
         # if 700 > x > 300 and 930 > y > 800:
         if x_1 > x > x_2 and y_1 > y > y_2:
-            loc = (x, y, opi_id)
+            loc = (x, y)
             return loc
 
 
@@ -150,20 +151,17 @@ def attact_color(red, green, blue, role_id):
     if len(red) != 0:
         for i in red:
             i = i + ('红卡',)
-            print(i)
             card.append(i)
             if len(card) == 3:
                 return card
     if len(green) != 0:
         for i in green:
             i = i + ('绿卡',)
-            print(i)
             card.append(i)
             if len(card) == 3:
                 return card
     for i in blue:
         i = i + ('蓝卡',)
-        print(i)
         card.append(i)
         if len(card) == 3:
             return card
@@ -231,10 +229,6 @@ def np(fgo_end_05, fgo_end_05_jin_Apple, fgo_end_05_yin_Apple, fgo_end_05_shenji
         elif Apple == '银苹果':
             loc = master_skill(fgo_zhandou, fgo_end_05_yin_Apple)
             subprocess.run(f'adb shell input tap {random.randint(loc[0], loc[0] + 100)} {random.randint(loc[1], loc[1] + 100)}')
-
-        #elif Apple == '铜苹果':
-        #    loc = master_skill(fgo_zhandou, fgo_end_05_tong_Apple)
-        #    subprocess.run(f'adb shell input tap {random.randint(loc[0], loc[0] + 100)} {random.randint(loc[1], loc[1] + 100)}')
 
         elif Apple == '圣晶石':
             loc = master_skill(fgo_zhandou, fgo_end_05_shenjinshi)

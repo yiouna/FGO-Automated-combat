@@ -27,7 +27,7 @@ def zhuzhan(img_2, servant, rank):
 def zhuzhan_xuanzhe_jiaose(servant,rank):
     """ servant 传入的需要对比的细节图片 ‘校色名称’ """
     """ 职介坐标 """
-    Catser = [(838, 172), (869, 205)]  # 术士
+    Catser = [(858, 154), (865, 200)]  # 术士
     """ 选择坐标 """
     if rank == 'Catser':
         subprocess.run(f'adb shell input tap {random.randint(Catser[0][0],Catser[1][0])} {random.randint(Catser[0][1],Catser[1][1])}')
@@ -55,6 +55,11 @@ def zhuzhan_xuanzhe_jiaose(servant,rank):
 
 
 def start(fgo_startTask):
+    """
+    废弃
+    :param fgo_startTask:
+    :return:
+    """
     """ fgo_startTask 开始任务图片 """
     zhilin.png()
     fgo_zhandou = cv.imread('images/zhandou.png')

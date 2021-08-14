@@ -1,39 +1,37 @@
-import cv2 as cv
-
 """ 战斗回合技能设置 """
-
-rounds = [    {'role_1': [['fgo_baojuchongneng'], True, None],
-     'role_2': [[], False, None],
-     'role_3': [[], False, None],
-     'master': [[], False, None], },
-
-    {'role_1': [['fgo_lvka_up', 'fgo_fangyu_dowm'], False, 'role_2'],
-     'role_2': [['fgo_baojuchongneng_up'], True, None],
-     'role_3': [['fgo_lvka_up'], False, 'role_2'],
-     'master': [['fgo_baojuchongneng'], False, 'role_2']},
-
-    {'role_1': [['fgo_baojuchongneng'], None, 'role_2'],
-     'role_2': [[], True, None],
-     'role_3': [['fgo_baojuchongneng','fgo_fangyu_dowm'], None, 'role_2'],
-     'master': [[], False, None], },
-
+# 小达芬奇 C呆毛 C呆毛
+rounds = [
+    {
+        'role_1': [{'fgo_huifu': "", 'fgo_baojuweili_up': ""}, 'true'],
+        'role_2': [{'fgo_gongjili_up': "", 'fgo_baojuchongneng': "role_1", 'fgo_lanka_up': "role_1"}, 'false'],
+        'role_3': [{'fgo_gongjili_up': "", 'fgo_baojuchongneng': "role_1", 'fgo_lanka_up': "role_1"}, 'false'],
+        'master': [{'fgo_baojuchongneng': "role_1"}, 'false']
+    },
+    {
+        'role_1': [[], 'true'],
+        'role_2': [[], 'false'],
+        'role_3': [[], 'false'],
+        'master': [[], 'false'],
+    },
+    {
+        'role_1': [[], 'true'],
+        'role_2': [[], 'false'],
+        'role_3': [[], 'false'],
+        'master': [[], 'false'],
+    },
 ]
-
 """ 选择助战角色 """
-servant = 'fgo_servant_sikadi_sikaha'
+servant = 'fgo_servant_Cdai'
 """ 
 fgo_servant_zhugekongmin 诸葛孔明       Catser阶级
 fgo_servant_sikadi_sikaha 斯卡哈·斯卡蒂   Catser阶级
 fgo_servant_meiling       梅林            Catser阶级
- 
+fgo_servant_Cdai           C呆 
 """
 rank = 'Catser'
 
-
-""" 战斗次数 """
-nums = 5
 """ 体力不足补充 """
-Apple = '银苹果'  # 不支持铜苹果 容易出问题
+Apple = '金苹果'  # 不支持铜苹果 容易出问题
 
 """
 圣晶石
