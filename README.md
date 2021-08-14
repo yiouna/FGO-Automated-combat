@@ -1,6 +1,14 @@
 # Automated combat
-一个  python 刷狗粮脚本。 使用opencv库
+一个  python 刷狗粮脚本。 使用opencv库<br>
+## bilibili 视频 [点击](https://www.bilibili.com/video/av887505662)
+## 缺点声明
+ 战斗有点慢，可能需要三分半一把。具体还是要看自己设置
+目前只支持 助战：C阶
+梅林
+诸葛孔明
+斯卡哈 
 
+自动吃苹果，不能吃铜苹果（懒的写）
 ## 功能
  
 - **自动助战**      √
@@ -134,6 +142,8 @@
         
        翻译 角色2 不适用技能 不使用宝具 技能不会任何人使用
        
+       
+![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/%E6%8A%80%E8%83%BD.png)
 # 声明
 
   任何因为本项目 而导致的账号损失，作者不负任何责任
