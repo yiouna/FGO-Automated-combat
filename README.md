@@ -6,7 +6,8 @@
 目前只支持 助战：C阶
 梅林
 诸葛孔明
-斯卡哈 
+斯卡哈
+C呆毛
 
 自动吃苹果，不能吃铜苹果（懒的写）
 ## 功能
@@ -110,37 +111,30 @@
   
   本脚本是自定义技能使用的 既多少回合结束战斗，每回合使用战斗技能，是否使用宝具，都需要自己进行填写，助战也是
   
-     [{'role_1': [['a','b'], c, ‘d’],
-      'role_2': [['a','b'], c, ‘d’]，
-      'role_3': [['a','b'], c, ‘d’]，
-      'master': [['a','b'], c, ‘d’]，}]
+    {
+        'role_1': [[], 'false'],
+        'role_2': [[], 'false'],
+        'role_3': [[], 'false'],
+        'master': [[], 'false'],
+    },
       
-      如此便代表一回合
-     
-     [{'role_1': [['a','b'], c, ‘d’],
-      'role_2': [['a','b'], c, ‘d’]，
-      'role_3': [['a','b'], c, ‘d’]，
-      'master': [['a','b'], c, ‘d’]，},
-      {'role_1': [['a','b'], c, ‘d’],
-      'role_2': [['a','b'], c, ‘d’]，
-      'role_3': [['a','b'], c, ‘d’]，
-      'master': [['a','b'], c, ‘d’]，}]
-      
-      如此便代表两回合
-      
-      a b 代表的是技能 只需要参照技能图标进行填写即可 如果不使用技能留空则好
-      
-      c 则是是否使用宝具。 False 不使用 True 使用
-      d 则是 技能使用 如果需要对角色进行选择 则填写 role_1 role_2 role_3 
-        如果不需要 则填写 None （目前只支持一个角色的技能针对 一个角色
-        
-       'role_1': [['fgo_baojuchongneng'], False, 'role_2']
-       
-       翻译 角色1 使用宝具充能技能，  不使用宝具 技能对角色2 使用
-       
-       'role_2': [[], False, None],
-        
-       翻译 角色2 不适用技能 不使用宝具 技能不会任何人使用
+ 技能解读
+    {
+        'role_1': [{'fgo_huifu': "", 'fgo_baojuweili_up': ""}, 'true'],
+        'role_2': [{'fgo_gongjili_up': "", 'fgo_baojuchongneng': "role_1", 'fgo_lanka_up': "role_1"}, 'false'],
+        'role_3': [{'fgo_gongjili_up': "", 'fgo_baojuchongneng': "role_1", 'fgo_lanka_up': "role_1"}, 'false'],
+        'master': [{'fgo_baojuchongneng': "role_1"}, 'false']
+    },
+    role_1 即为角色1
+    {'fgo_huifu': "", 'fgo_baojuweili_up': ""}, 'true'
+    回复技能,无目标  宝具威力加强,无目标  'true' 表示这回合使用宝具
+    role_2 角色2 
+    {'fgo_gongjili_up': "", 'fgo_baojuchongneng': "role_1", 'fgo_lanka_up': "role_1"}, 'false'
+    攻击力加强 无目标 宝具充能 对象 一号角色 蓝卡加强 一号角色 不释放宝具
+    
+    masert 即为御主技能
+    
+    config 自动配备的 是小达芬奇 C呆毛 C呆毛 蓝卡队技能循环, 御主衣服为第二个技能是充能的衣服
        
        
 ![Image text](https://github.com/yiouna/fgo-Automated-combat/blob/main/images/%E6%8A%80%E8%83%BD.png)
