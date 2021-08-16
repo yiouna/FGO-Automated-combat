@@ -5,7 +5,7 @@ import zhilin
 
 from config import *
 from resource import *
-from lib import zhuzhan, zhandou
+from lib import zhandou
 
 import datetime
 
@@ -101,7 +101,7 @@ def main(rounds, nums, servant, rank, Apple):
             for i in card:
                 subprocess.run(
                     f'adb shell input tap {random.randint(i[0], i[0] + 50)} {random.randint(i[1], i[1] + 50)}')
-                time.sleep(0.4)
+                time.sleep(0.3)
             print("[" + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "]" + f"[第{num + 1}回合]", '本回合结束')
         print("[" + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "]" + f"[第{num + 1}回合]", '战斗结束，等待结算')
         if num + 1 == nums:
@@ -109,11 +109,17 @@ def main(rounds, nums, servant, rank, Apple):
         else:
             num_fix = False
         zhandou.end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_01, fgo_end_04, fgo_end_04_01, fgo_end_04_02,
-                    num_fix, fgo_zhuzhan)
+                    num_fix, )
         if not num_fix:
             zhandou.np(fgo_end_05, fgo_end_05_jin_Apple, fgo_end_05_yin_Apple, fgo_end_05_shenjinshi, fgo_end_05_ok,
                        Apple)
-            zhuzhan.zhuzhan(fgo_zhuzhan, globals()[servant], rank)
+
+        if len(lizhuan) == 0:
+            # 没有选择礼装 则礼装值为 ''
+            zhandou.zhuzhan(fgo_zhuzhan, globals()[servant], rank,lizhuan)
+        else:
+            # 选择了礼装
+            zhandou.zhuzhan(fgo_zhuzhan, globals()[servant], rank,globals()[lizhuan])
 
     end = time.time()
     print(f'一共用时{(end - start) / 60}分钟')

@@ -30,6 +30,13 @@ fgo_servant_Cdai           C呆
 """
 rank = 'Catser'
 
+""" 选择助战礼装 """
+
+lizhuan = 'fgo_lizhuang_yilishabai_xiao'
+
+# 不选择礼装筛选 及 lizhuan = '' 即可
+
+
 """ 体力不足补充 """
 Apple = '金苹果'  # 不支持铜苹果 容易出问题
 

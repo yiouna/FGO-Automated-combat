@@ -54,4 +54,6 @@ fgo_servant_zhugekongmin = cv.imread('images/servant/fgo-servant-zhugekongmin.pn
 fgo_servant_meiling = cv.imread('images/servant/fgo-servant-meiling.png')
 fgo_servant_Cdai = cv.imread("images/servant/fgo-servant-Cdai.jpg")
 
-
+""" 助战礼装 """
+fgo_lizhuang_yilishabai_da = cv.imread('images/lizhuan/yilishabai-da.png')
+fgo_lizhuang_yilishabai_xiao = cv.imread('images/lizhuan/yilishabai-xiao.png')
