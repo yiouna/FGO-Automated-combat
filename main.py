@@ -114,12 +114,12 @@ def main(rounds, nums, servant, rank, Apple):
             zhandou.np(fgo_end_05, fgo_end_05_jin_Apple, fgo_end_05_yin_Apple, fgo_end_05_shenjinshi, fgo_end_05_ok,
                        Apple)
 
-        if len(lizhuan) == 0:
-            # 没有选择礼装 则礼装值为 ''
-            zhandou.zhuzhan(fgo_zhuzhan, globals()[servant], rank,lizhuan)
-        else:
-            # 选择了礼装
-            zhandou.zhuzhan(fgo_zhuzhan, globals()[servant], rank,globals()[lizhuan])
+            if len(lizhuan) == 0:
+                # 没有选择礼装 则礼装值为 ''
+                zhandou.zhuzhan(fgo_zhuzhan, globals()[servant], rank,lizhuan)
+            else:
+                # 选择了礼装
+                zhandou.zhuzhan(fgo_zhuzhan, globals()[servant], rank,globals()[lizhuan])
 
     end = time.time()
     print(f'一共用时{(end - start) / 60}分钟')
