@@ -2,11 +2,12 @@ import os
 import random
 import subprocess
 import time
-from resource_zhuzhan import * # 此模块已经导入 cv 了
+from resource_zhuzhan import *  # 此模块已经导入 cv 了
 import numpy as nu
-
+import uiautomator2 as u2
 import zhilin
 
+d = u2.connect()
 
 """===== 技能使用 ===== """
 """ 创建一个战斗技能识别坐标 """
@@ -65,32 +66,33 @@ def Skill_object(opt_id):
 
 
 # print(skill(img,img1))
-def role(pos, role_id, ):
+def role(pos, role_id, pandi_loc):
+    pandi_loc = globals()[pandi_loc]
     """ 角色 1 2 3 进项筛选返回坐标 """
     if role_id == 'role_1':
-        loc = pre(700, 250, 930, 800, pos, )
+        loc = pre(pandi_loc[0], pos, )
         return loc
     elif role_id == 'role_2':
-        loc = pre(1160, 770, 930, 800, pos, )
+        loc = pre(pandi_loc[1], pos, )
         return loc
     elif role_id == 'role_3':
-        loc = pre(1640, 1200, 930, 800, pos, )
+        loc = pre(pandi_loc[2], pos, )
         return loc
     elif role_id == 'master':
-        loc = pre(1940, 1550, 630, 400, pos, )
+        loc = pre(pandi_loc[3], pos, )
         return loc
 
 
 """ ==================== """
 
 
-def pre(x_1, x_2, y_1, y_2, pos):
+def pre(pandi_loc, pos):
     """ 属于 role 内置判断函数 用于筛选坐标 """
     for i in pos:
         x = i[0]
         y = i[1]
         # if 700 > x > 300 and 930 > y > 800:
-        if x_1 > x > x_2 and y_1 > y > y_2:
+        if pandi_loc[0] > x > pandi_loc[1] and pandi_loc[2] > y > pandi_loc[3]:
             loc = (x, y)
             return loc
 
@@ -170,15 +172,14 @@ def attact_color(red, green, blue, role_id):
             return card
 
 
-def end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_01, fgo_end_04, fgo_end_04_01, fgo_end_04_02, num_fix,):
+def end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_01, fgo_end_04, fgo_end_04_01, fgo_end_04_02, num_fix, ):
     while True:
-        zhilin.png()
-        fgo_zhandou = cv.imread('images/zhandou.png')
+        fgo_zhandou = d.screenshot(format='opencv')
 
         a = master_skill(fgo_zhandou, fgo_end_01, 0.8)
         b = master_skill(fgo_zhandou, fgo_end_02, 0.8)
         c = master_skill(fgo_zhandou, fgo_end_03, 0.8)
-        d = master_skill(fgo_zhandou, fgo_end_04, 0.8)
+        f = master_skill(fgo_zhandou, fgo_end_04, 0.8)
         if len(a) == 2 or len(b) == 2:
             if len(a) == 2:
                 print('从者羁绊')
@@ -190,7 +191,7 @@ def end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_01, fgo_end_04, fgo_end_0
                 subprocess.run(
                     f'adb shell input tap {random.randint(b[0], b[0] + 250)} {random.randint(b[1], b[1] + 40)}')
                 time.sleep(0.8)
-        elif len(c) == 2 or len(d) == 2:
+        elif len(c) == 2 or len(f) == 2:
             if len(c) == 2:
                 print('获得战利品')
                 loc = master_skill(fgo_zhandou, fgo_end_03_01, 0.8)
@@ -198,7 +199,7 @@ def end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_01, fgo_end_04, fgo_end_0
                 subprocess.run(
                     f'adb shell input tap {random.randint(loc[0], loc[0] + 160)} {random.randint(loc[1], loc[1] + 50)}')
                 time.sleep(0.8)
-            elif len(d) == 2:
+            elif len(f) == 2:
                 if num_fix:
                     loc = master_skill(fgo_zhandou, fgo_end_04_01, 0.8)  # 不继续
                     subprocess.run(
@@ -211,7 +212,7 @@ def end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_01, fgo_end_04, fgo_end_0
                     subprocess.run(
                         f'adb shell input tap {random.randint(loc[0], loc[0] + 160)} {random.randint(loc[1], loc[1] + 50)}')
                     # 为了防止 截图间隔时间太短导致 连续点击 这边停顿一秒 再截图
-                    time.sleep(1)
+                    time.sleep(0.8)
                     break
         else:
             time.sleep(random.uniform(0.5, 0.8))
@@ -220,8 +221,8 @@ def end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_01, fgo_end_04, fgo_end_0
 
 def np(fgo_end_05, fgo_end_05_jin_Apple, fgo_end_05_yin_Apple, fgo_end_05_shenjinshi, fgo_end_05_ok, Apple):
     time.sleep(1.5)
-    zhilin.png()
-    fgo_zhandou = cv.imread('images/zhandou.png')
+
+    fgo_zhandou = d.screenshot(format='opencv')
     loc = master_skill(fgo_zhandou, fgo_end_05)
     if len(loc) == 2:
         print('检测到体力不足')
@@ -239,8 +240,7 @@ def np(fgo_end_05, fgo_end_05_jin_Apple, fgo_end_05_yin_Apple, fgo_end_05_shenji
             subprocess.run(
                 f'adb shell input tap {random.randint(loc[0], loc[0] + 100)} {random.randint(loc[1], loc[1] + 100)}')
         while True:
-            zhilin.png()
-            fgo_zhandou = cv.imread('images/zhandou.png')
+            fgo_zhandou = d.screenshot(format='opencv')
             loc = master_skill(fgo_zhandou, fgo_end_05_ok)
             if len(loc) == 2:
                 subprocess.run(
@@ -288,8 +288,7 @@ def pol_zhuzhan_pandin_II(servant, lizhuan):
 
 def zhuzhan(img_2, servant, rank, lizhuan):
     """ servant传入的需要对比的 ‘助战选择’ rank 则是职介 """
-    zhilin.png()
-    fgo_zhandou = cv.imread('images/zhandou.png')
+    fgo_zhandou = d.screenshot(format='opencv')
     while True:
         res = cv.matchTemplate(fgo_zhandou, img_2, cv.TM_CCOEFF_NORMED)
         if (res >= 0.8).any():
@@ -334,13 +333,15 @@ def zhuzhan_xuanzhe_jiaose(servant, rank, lizhuan):
                 fgo_zhandou = cv.imread('images/zhandou.png')
             if num >= 7:
                 num = 0
-                loc = master_skill(fgo_zhandou,fgo_zhuzhan_shuaxing)
-                subprocess.run(f'adb shell input tap {random.randint(loc[0], loc[0] + 50)} {random.randint(loc[1], loc[1] + 40)}')
+                loc = master_skill(fgo_zhandou, fgo_zhuzhan_shuaxing)
+                subprocess.run(
+                    f'adb shell input tap {random.randint(loc[0], loc[0] + 50)} {random.randint(loc[1], loc[1] + 40)}')
                 time.sleep(random.uniform(0.2, 0.4))
                 zhilin.png()
                 fgo_zhandou = cv.imread('images/zhandou.png')
                 loc = master_skill(fgo_zhandou, fgo_zhuzhan_shuaxing_OK)
-                subprocess.run(f'adb shell input tap {random.randint(loc[0], loc[0] + 200)} {random.randint(loc[1], loc[1] + 50)}')
+                subprocess.run(
+                    f'adb shell input tap {random.randint(loc[0], loc[0] + 200)} {random.randint(loc[1], loc[1] + 50)}')
                 print("刷新助战成功")
 
 
@@ -371,11 +372,13 @@ def zhuzhan_xuanzhe_jiaose(servant, rank, lizhuan):
 
             if num >= 7:
                 num = 0
-                loc = master_skill(fgo_zhandou,fgo_zhuzhan_shuaxing)
-                subprocess.run(f'adb shell input tap {random.randint(loc[0], loc[0] + 50)} {random.randint(loc[1], loc[1] + 40)}')
+                loc = master_skill(fgo_zhandou, fgo_zhuzhan_shuaxing)
+                subprocess.run(
+                    f'adb shell input tap {random.randint(loc[0], loc[0] + 50)} {random.randint(loc[1], loc[1] + 40)}')
                 time.sleep(random.uniform(0.2, 0.4))
                 zhilin.png()
                 fgo_zhandou = cv.imread('images/zhandou.png')
                 loc = master_skill(fgo_zhandou, fgo_zhuzhan_shuaxing_OK)
-                subprocess.run(f'adb shell input tap {random.randint(loc[0], loc[0] + 200)} {random.randint(loc[1], loc[1] + 50)}')
+                subprocess.run(
+                    f'adb shell input tap {random.randint(loc[0], loc[0] + 200)} {random.randint(loc[1], loc[1] + 50)}')
                 print("刷新助战成功")

@@ -1,7 +1,6 @@
 import random
 import subprocess
 import time
-import zhilin
 
 from config import *
 from resource import *
@@ -9,11 +8,13 @@ from lib import zhandou
 
 import datetime
 
+import uiautomator2 as u2
+
+d = u2.connect()
 
 # adb devices 查看设备
 
-
-def main(rounds, nums, servant, rank, Apple):
+def main(rounds, nums, servant, rank, Apple,):
     """
 
     :param rounds: config 战后回合技能设定
@@ -37,9 +38,7 @@ def main(rounds, nums, servant, rank, Apple):
               f"开始进行第{num + 1}次战斗")
         for round_i in rounds:
             while True:
-                zhilin.png()
-                fgo_zhandou = cv.imread('images/zhandou.png')
-
+                fgo_zhandou = d.screenshot(format='opencv')
                 loc_master = zhandou.master_skill(fgo_zhandou, fgo_master_skill)
                 if len(loc_master) == 1:
                     print("[" + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "]" + f"[第{num + 1}回合]",
@@ -55,8 +54,7 @@ def main(rounds, nums, servant, rank, Apple):
                 subprocess.run(
                     f'adb shell input tap {random.randint(loc_master[0], loc_master[0] + 50)} {random.randint(loc_master[1], loc_master[1] + 50)}')
                 time.sleep(0.3)
-            zhilin.png()
-            fgo_zhandou = cv.imread('images/zhandou.png')
+            fgo_zhandou = d.screenshot(format='opencv')
             role_id, huihe = [], []
             "对需要使用的技能进行坐标判断 ↓↓↓↓↓↓"
             for i in round_i:
@@ -65,7 +63,7 @@ def main(rounds, nums, servant, rank, Apple):
                     role_id.append(i)
                 for y in round_i[i][0]:
                     pos = zhandou.skill(fgo_zhandou, globals()[y])
-                    loc = zhandou.role(pos, i,)
+                    loc = zhandou.role(pos, i,mod)
 
                     huihe.append([loc, round_i[i][0][y]])
             print("[" + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "]" + f"[第{num + 1}回合]", '本轮释放宝具角色',
@@ -93,8 +91,7 @@ def main(rounds, nums, servant, rank, Apple):
             time.sleep(1)
             # 开始确定使用卡牌
             time.sleep(1)
-            zhilin.png()
-            fgo_zhandou = cv.imread('images/zhandou.png')
+            fgo_zhandou = d.screenshot(format='opencv')
             print("[" + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "]" + f"[第{num + 1}回合]", '确定使用色卡')
             red, green, blue = zhandou.attack_choose(fgo_zhandou, fgo_red, fgo_green, fgo_blue)
             card = zhandou.attact_color(red, green, blue, role_id)
@@ -109,7 +106,7 @@ def main(rounds, nums, servant, rank, Apple):
         else:
             num_fix = False
         zhandou.end(fgo_end_01, fgo_end_02, fgo_end_03, fgo_end_03_01, fgo_end_04, fgo_end_04_01, fgo_end_04_02,
-                    num_fix, )
+                    num_fix,)
         if not num_fix:
             zhandou.np(fgo_end_05, fgo_end_05_jin_Apple, fgo_end_05_yin_Apple, fgo_end_05_shenjinshi, fgo_end_05_ok,
                        Apple)
@@ -126,8 +123,12 @@ def main(rounds, nums, servant, rank, Apple):
 
 
 if __name__ == '__main__':
+
+
     # locals()  返回局部变量  globals() 返回全局变量
-    xxxx = input("请将手机摆正充电口向右边.....任意键继续")
+    if mod == "mate30":
+        xxxx = input("请将手机摆正充电口向右边.....任意键继续")
+
     nums = int(input("请输入战斗次数....:") or 20)
-    main(rounds, nums, servant, rank, Apple)
+    main(rounds, nums, servant, rank, Apple,)
 
