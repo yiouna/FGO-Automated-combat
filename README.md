@@ -30,7 +30,9 @@
   <br>
   至于大家认为的封号问题,其实这个脚本是我四月份写的,八月份更新的二代目.bilibili的视频其实也是一代目的<br> 
   我其实以及用了接近四个月了 ,刷了200+的金苹果 目前没有任何问题.
-## 关于技能名称设置 image → wiki → 未标题-1.png,未标题-2.png  里面标注了名称. 需要下载才能看见,(不然无法观看)
+## 关于技能名称设置 image → wiki → 未标题-1.png,未标题-2.png  里面标注了名称. 需要下载
+
+![Image text](https://github.com/yiouna/FGO-Automated-combat/blob/main/images/wiki/%E6%9C%AA%E6%A0%87%E9%A2%98-1.png)
 ## 缺点声明
 
  战斗有点慢，可能需要三分一把。具体还是要看自己设置
