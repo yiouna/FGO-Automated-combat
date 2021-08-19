@@ -33,6 +33,7 @@
 ## 关于技能名称设置 image → wiki → 未标题-1.png,未标题-2.png  里面标注了名称. 需要下载
 
 ![Image text](https://github.com/yiouna/FGO-Automated-combat/blob/main/images/wiki/%E6%9C%AA%E6%A0%87%E9%A2%98-1.png)
+![Image text](**https://github.com/yiouna/FGO-Automated-combat/blob/main/images/wiki/%E6%9C%AA%E6%A0%87%E9%A2%98-1.png**)
 ## 缺点声明
 
  战斗有点慢，可能需要三分一把。具体还是要看自己设置
